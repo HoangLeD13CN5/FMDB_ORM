@@ -111,11 +111,11 @@ for (ABCUser *user in users) {
 }
 ```
 Count records by where conditions
-# Count all users.
+### Count all users.
 ```
 NSInteger count = [ABCUser count];
 ```
-# Count users whose name is 'Kohki Makimoto'.
+### Count users whose name is 'Kohki Makimoto'.
 ```
 NSInteger count = [ABCUser countWhere:@"name = :name" parameters:@{@"name": @"Kohki Makimoto"}];
 ```
