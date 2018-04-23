@@ -39,6 +39,7 @@
 
 + (FMXModel *)modelWithValues:(NSDictionary *)values;
 
++ (NSArray *)getAllModel;
 
 + (NSArray *)modelsWhere:(NSString *)conditions parameters:(NSDictionary *)parameters;
 

@@ -65,6 +65,31 @@
     return [self modelWhere:conditions parameters:parameters database:nil];
 }
 
+- (NSArray *)getAllModel
+{
+   NSMutableArray *models = [[NSMutableArray alloc] init];
+    FMXTableMap *table = [[FMXDatabaseManager sharedManager] tableForModel:self.modelClass];
+    BOOL isPrivateConnection = NO;
+    FMDatabase *db = [[FMXDatabaseManager sharedManager] databaseForModel:self.modelClass];
+    if([db open]){
+        isPrivateConnection = YES;
+        NSString *sql = [NSString stringWithFormat:@"select * from `%@`",
+                         table.tableName];
+        FMResultSet *rs = [db executeQuery:sql];
+        
+        if ([rs next]) {
+            [models addObject:[self.modelClass modelWithResultSet:rs]];
+        }
+        
+    }
+    
+    if (isPrivateConnection) {
+        [db close];
+    }
+    
+    return models;
+}
+
 - (FMXModel *)modelWhere:(NSString *)conditions parameters:(NSDictionary *)parameters database:(FMDatabase *)db
 {
     FMXModel *model = nil;

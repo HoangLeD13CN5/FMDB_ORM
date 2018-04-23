@@ -22,6 +22,11 @@
     [movie save];
     MovieEntity *moviess = (MovieEntity *)[MovieEntity modelByPrimaryKey:@(1)];
     NSLog(@"Hello %@", moviess.movieName);
+    NSArray *arr = [MovieEntity getAllModel];
+    if(arr.count > 0){
+        MovieEntity *mov = [arr objectAtIndex:0];
+        NSLog(@"Hello %@", mov.movieName);
+    }
 }
 
 

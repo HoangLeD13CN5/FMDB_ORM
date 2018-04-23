@@ -30,6 +30,7 @@
 - (FMXModel *)modelWhere:(NSString *)conditions parameters:(NSDictionary *)parameters orderBy:(NSString *)orderBy database:(FMDatabase *)db;
 
 
+- (NSArray *)getAllModel;
 
 - (NSArray *)modelsWhere:(NSString *)conditions parameters:(NSDictionary *)parameters;
 
